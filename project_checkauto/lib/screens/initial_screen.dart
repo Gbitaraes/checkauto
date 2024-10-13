@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:project_checkauto/screens/inspection_page.dart';
 
@@ -13,15 +12,13 @@ class InitialScreen extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
         useMaterial3: true,
       ),
-      home: MyWidget(),
+      home: const MyWidget(),
     );
   }
 }
 
 class MyWidget extends StatelessWidget {
-  MyWidget({super.key});
-
-  final _formkey = GlobalKey<FormState>();
+  const MyWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -55,12 +52,6 @@ class MyWidget extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(5.0),
                   child: TextFormField(
-                    validator: (String? value) {
-                      if (value != null && value.isEmpty) {
-                        return 'Insira o nome do cliente';
-                      }
-                      return null;
-                    },
                     controller: clientNameController,
                     textAlign: TextAlign.center,
                     decoration: const InputDecoration(
@@ -76,12 +67,6 @@ class MyWidget extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(5.0),
                   child: TextFormField(
-                    validator: (String? value) {
-                      if (value != null && value.isEmpty) {
-                        return 'Insira o modelo do veículo';
-                      }
-                      return null;
-                    },
                     controller: carModelController,
                     textAlign: TextAlign.center,
                     decoration: const InputDecoration(
@@ -97,12 +82,6 @@ class MyWidget extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
-                    validator: (String? value) {
-                      if (value != null && value.isEmpty) {
-                        return 'Insira a placa do veículo';
-                      }
-                      return null;
-                    },
                     controller: carPlateController,
                     textAlign: TextAlign.center,
                     decoration: const InputDecoration(
@@ -118,12 +97,6 @@ class MyWidget extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
-                    validator: (String? value) {
-                      if (value != null && value.isEmpty) {
-                        return 'Insira a cor do veículo';
-                      }
-                      return null;
-                    },
                     controller: colorController,
                     textAlign: TextAlign.center,
                     decoration: const InputDecoration(
@@ -139,12 +112,6 @@ class MyWidget extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
-                    validator: (String? value) {
-                      if (value != null && value.isEmpty) {
-                        return 'Insira a localização';
-                      }
-                      return null;
-                    },
                     controller: locationController,
                     textAlign: TextAlign.center,
                     decoration: const InputDecoration(
@@ -160,12 +127,6 @@ class MyWidget extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
-                    validator: (String? value) {
-                      if (value != null && value.isEmpty) {
-                        return 'Insira o destino final';
-                      }
-                      return null;
-                    },
                     controller: destinationController,
                     textAlign: TextAlign.center,
                     decoration: const InputDecoration(
@@ -192,23 +153,12 @@ class MyWidget extends StatelessWidget {
                   children: [
                     ElevatedButton(
                       onPressed: () {
-                        if (kDebugMode) {
-                          if (_formkey.currentState!.validate()) {
-                            print(clientNameController.text);
-                            print(carModelController.text);
-                            print(carPlateController.text);
-                            print(colorController.text);
-                            print(locationController.text);
-                            print(destinationController.text);
-                          }
-
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const InspectionPage(),
-                            ),
-                          );
-                        }
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const InspectionPage(),
+                          ),
+                        );
                       },
                       style: ElevatedButton.styleFrom(
                         foregroundColor: Colors.black,
